@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ 
+  subsets: ["latin"],
+  weight: ['400', '700'],
+});
 
 export const metadata: Metadata = {
   title: "Raya Portfolio",
@@ -17,8 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className}
-      bg-gray-50 text-gray-950 relative h-[5000px]`}>
+      <body className={`${roboto.className}
+      bg-gray-50 text-gray-950 relative h-[5000px] pt-40 sm:pt-48`}>
+
+
+
         <div className="bg-[#fecdd3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] 
         w-[31.25rem] rounded-full blur-[8rem] sm:w-[68.75rem]"></div>
         <div className="bg-[#ddd6fe] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] 
