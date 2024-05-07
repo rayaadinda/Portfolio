@@ -53,9 +53,10 @@ export const projectsData = [
 	{
 		title: "Movie-List",
 		description:
-			"movie list is a react project that displays a list of movies by consuming api from TheMoviedb",
+			"movie list is a my react project that displays a list of movies by consuming api from TheMoviedb",
 		tags: ["react", "taildwindCSS", "Javascript"],
 		imageUrl: movielistImg,
+		href: "https://rayaadinda.github.io/fromrayacamera/",
 	},
 
 	{
