@@ -86,18 +86,19 @@ export const skillsData = [
 
 export const experiencesData = [
 	{
-		title: "SMKN 58 JAKARTA",
-		location: "Cipayung, Jakarta Timur",
-		description: "I graduated after 3 years of studying in Senior High Scholl",
-		icon: React.createElement(LuGraduationCap),
-		date: " 2019 - 2021",
-	},
-	{
 		title: "Universitas Pamulang",
 		location: "Pamulang, Tanggerang Selatan",
 		description:
 			"I'm now a Computer Science Student at Universitas Pamulang. Currently i'm in 4th Semester.",
 		icon: React.createElement(LuGraduationCap),
 		date: " 2022 - present",
+	},
+
+	{
+		title: "SMKN 58 JAKARTA",
+		location: "Cipayung, Jakarta Timur",
+		description: "I graduated after 3 years of studying in Senior High Scholl",
+		icon: React.createElement(LuGraduationCap),
+		date: " 2019 - 2021",
 	},
 ] as const
