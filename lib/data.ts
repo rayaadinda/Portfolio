@@ -3,6 +3,7 @@ import fromrayacameraImg from "@/public/fromrayacamera.png"
 import rayminImg from "@/public/raymin.png"
 import movielistImg from "@/public/movielist.png"
 import bookshelfImg from "@/public/bookshelf.png"
+import rafconvertImg from "@/public/rafconvert.png"
 import { CgWorkAlt } from "react-icons/cg"
 import { FaReact } from "react-icons/fa"
 import { LuGraduationCap } from "react-icons/lu"
@@ -65,6 +66,14 @@ export const projectsData = [
 			"BookshelfApp is a web app for managing book collections, where users can input book details like title, author, and publication date. It organizes books into read and unread categories, aiding users in tracking their reading progress.",
 		tags: ["html", "css", "Javascript"],
 		imageUrl: bookshelfImg,
+	},
+
+	{
+		title: "RAFConvert",
+		description:
+			"RAFConvert is a versatile website designed for hassle-free conversion of links from YouTube, Instagram, and Twitter into downloadable formats. With RAFConvert, users can easily obtain their favorite content from these platforms with just a few clicks",
+		tags: ["html", "css", "Javascript"],
+		imageUrl: rafconvertImg,
 	},
 ] as const
 
