@@ -28,8 +28,8 @@ export default function Intro() {
 			>
 				<span className="font-bold">Hello, I'm Raya Adinda.</span> undergraduate
 				student <span className="font-bold">at Universitas Pamulang</span> I
-				enjoy building <span className="italic">sites & apps</span>. My focus is{" "}
-				<span className="underline">Frontend</span>.
+				enjoy building <span className="italic">Website & Apps</span>. With
+				focus on <span className="underline">Frontend</span>.
 			</motion.h1>
 
 			<motion.div
