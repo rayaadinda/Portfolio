@@ -7,6 +7,7 @@ import rafconvertImg from "@/public/rafconvert.png"
 import { CgWorkAlt } from "react-icons/cg"
 import { FaReact } from "react-icons/fa"
 import { LuGraduationCap } from "react-icons/lu"
+import { url } from "inspector"
 
 export const links = [
 	{
@@ -42,6 +43,7 @@ export const projectsData = [
 			"Fromrayacamera is a website gallery of my journey while using an analog camera as well as being a final project in one of my courses",
 		tags: ["Html", "css", "Javascript", "figma"],
 		imageUrl: fromrayacameraImg,
+		url: "https://rayaadinda.github.io/fromrayacamera/",
 	},
 	{
 		title: "Raymin",
@@ -49,6 +51,7 @@ export const projectsData = [
 			"Raymin is an admin dashboard website that I sliced ​​from Figma",
 		tags: ["Html", "css", "Javascript", "figma"],
 		imageUrl: rayminImg,
+		url: "https://rayaadinda.github.io/Slicing-Admin-Dasboard/",
 	},
 
 	{
@@ -57,7 +60,7 @@ export const projectsData = [
 			"movie list is a my react project that displays a list of movies by consuming api from TheMoviedb",
 		tags: ["react", "taildwindCSS", "Javascript"],
 		imageUrl: movielistImg,
-		href: "https://rayaadinda.github.io/fromrayacamera/",
+		url: "https://react-movie-jet.vercel.app/",
 	},
 
 	{
@@ -66,6 +69,7 @@ export const projectsData = [
 			"BookshelfApp is a web app for managing book collections, where users can input book details like title, author, and publication date. It organizes books into read and unread categories, aiding users in tracking their reading progress.",
 		tags: ["html", "css", "Javascript"],
 		imageUrl: bookshelfImg,
+		url: "https://book-shelf-app-zeta.vercel.app/",
 	},
 
 	{
@@ -74,6 +78,7 @@ export const projectsData = [
 			"RAFConvert is a versatile website designed for hassle-free conversion of links from YouTube, Instagram, and Twitter into downloadable formats. With RAFConvert, users can easily obtain their favorite content from these platforms with just a few clicks",
 		tags: ["html", "css", "Javascript"],
 		imageUrl: rafconvertImg,
+		url: "https://rayaadinda.github.io/RAF/",
 	},
 ] as const
 
