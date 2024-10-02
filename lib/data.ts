@@ -4,6 +4,7 @@ import rayminImg from "@/public/raymin.png"
 import movielistImg from "@/public/movielist.png"
 import bookshelfImg from "@/public/bookshelf.png"
 import rafconvertImg from "@/public/rafconvert.png"
+import monogatari from "@/public/image.png"
 import { CgWorkAlt } from "react-icons/cg"
 import { FaReact } from "react-icons/fa"
 import { LuGraduationCap } from "react-icons/lu"
@@ -79,6 +80,15 @@ export const projectsData = [
 		tags: ["html", "css", "Javascript"],
 		imageUrl: rafconvertImg,
 		url: "https://rayaadinda.github.io/RAF/",
+	},
+
+	{
+		title: "Monogatari",
+		description:
+			"Monogatari is a MERN stack Blog WebApp that allows users to read, create, and delete blog posts. It's a platform for sharing stories, thoughts, and experiences.",
+		tags: ["MongoDB", "Expressjs", "Reactjs", "Tailwindcss", "Nodejs"],
+		imageUrl: monogatari,
+		url: "https://monogatariv2.vercel.app/",
 	},
 ] as const
 
