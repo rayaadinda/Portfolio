@@ -97,6 +97,7 @@ export const skillsData = [
 	"CSS",
 	"JavaScript",
 	"TypeScript",
+	"Kotlin",
 	"React",
 	"Next.js",
 	"Git",
@@ -113,7 +114,7 @@ export const experiencesData = [
 		title: "Universitas Pamulang",
 		location: "Pamulang, Tanggerang Selatan",
 		description:
-			"I'm now a Computer Science Student at Universitas Pamulang. Currently i'm in 4th Semester.",
+			"I'm now a Computer Science Student at Universitas Pamulang. Currently i'm in 6th Semester.",
 		icon: React.createElement(LuGraduationCap),
 		date: " 2022 - present",
 	},

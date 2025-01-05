@@ -18,19 +18,15 @@ export default function About() {
 		>
 			<SectionHeading>About Me</SectionHeading>
 			<p className="mb-3">
-				I'm currently student at{" "}
-				<span className="font-bold">Universitas Pamulang</span>, this year is my
-				4th semester. I'm interested in Frontend{" "}
-				<span className="font-medium">
-					{" "}
-					and i wish i can become a full-stack web development
-				</span>
-				. <span className="italic">My favorite part of programming</span> is the
-				problem-solving aspect. I <span className="underline">love</span> the
-				feeling of finally figuring out a solution to a problem. My core stack
-				is <span className="font-medium">React and Next js</span> I am always
-				looking to learn new technologies. I am currently looking for a{" "}
-				<span className="font-medium">Junior Frontend Web Developer</span>
+				Currently a 6th-semester student at{" "}
+				<span className="font-bold">Universitas Pamulang</span>, pursuing a degree in Computer Science. I'm passionate about software development, with a focus on mobile and web development.
+			</p>
+			<p className="mb-3">
+				I'm currently interning at{" "}
+				<span className="font-bold">Bangkit Academy</span> as a Mobile Developer, where I work with Kotlin to build Android applications. This experience has strengthened my understanding of mobile development principles and best practices.
+			</p>
+			<p>
+				My technical journey spans both mobile and web development, allowing me to approach problems with a versatile perspective. I'm particularly interested in creating intuitive user experiences and exploring the intersection of mobile and web development.
 			</p>
 		</motion.section>
 	)
