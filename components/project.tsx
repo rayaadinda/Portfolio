@@ -36,34 +36,55 @@ export default function Project({
 				scale: scaleProgress,
 				opacity: opacityProgress,
 			}}
-			className="group mb-3 sm:mb-8 last:mb-0"
+			className="group last:mb-0"
 		>
 			<a href={url} target="_blank" rel="noopener noreferrer">
-				<section className="bg-gray-100 h-[400px] border border-black/5 rounded-lg overflow-hidden hover:bg-gray-200 transition dark:text-white dark:bg-white/10 dark:hover:bg-white/20 flex flex-col">
-					<div className="h-48 overflow-hidden">
+				<section className="flex items-center p-4 sm:hidden">
+					<div className="w-12 h-12 rounded-md bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mr-4">
 						<Image
 							src={imageUrl}
 							alt="Project"
 							quality={95}
-							className="w-full h-full object-cover object-center transition group-hover:scale-105"
+							className="w-6 h-6 object-contain"
 						/>
 					</div>
-					<div className="flex flex-col p-4 flex-grow">
-						<h3 className="text-2xl font-semibold mb-2">{title}</h3>
-						<p className="text-gray-700 dark:text-white/70 mb-4 line-clamp-3">
+					<div className="flex-1">
+						<h3 className="font-medium text-[15px] text-black dark:text-white">{title}</h3>
+						<p className="text-gray-500 dark:text-white/60 text-sm">{tags.slice(0, 4).join(", ")}</p>
+					</div>
+					<div>
+						<svg className="w-5 h-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+						</svg>
+					</div>
+				</section>
+
+				<section className="relative h-[400px] rounded-md overflow-hidden group hidden sm:block">
+					<Image
+						src={imageUrl}
+						alt="Project"
+						quality={95}
+						className="w-full h-full object-cover object-center brightness-[0.3] group-hover:scale-105 group-hover:brightness-[0.2] transition duration-300"
+					/>
+					<div className="absolute inset-0 flex flex-col justify-end p-8">
+						<h3 className="text-4xl font-bold text-white mb-4">{title}</h3>
+						<p className="text-white/80 mb-6 line-clamp-3 text-lg">
 							{description}
 						</p>
-						<div className="mt-auto">
+						<div className="flex justify-between items-center">
 							<ul className="flex flex-wrap gap-2">
 								{tags.map((tag, index) => (
 									<li
-										className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
+										className="bg-white/10 backdrop-blur-sm px-4 py-1 text-sm text-white rounded-full"
 										key={index}
 									>
 										{tag}
 									</li>
 								))}
 							</ul>
+							<button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-white/90 transition">
+								View Project
+							</button>
 						</div>
 					</div>
 				</section>

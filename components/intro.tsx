@@ -32,7 +32,7 @@ export default function Intro() {
 					</motion.h1>
 
 					<motion.p
-						className="text-gray-600/80 text-base sm:text-lg mb-6"
+						className="text-black text-base sm:text-lg mb-6"
 						initial={{ opacity: 0, y: 100 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.1 }}
@@ -77,7 +77,7 @@ export default function Intro() {
 				</div>
 
 				<div className="flex flex-col items-center gap-3">
-					<div className="bg-[#E8FBE8] text-emerald-600 px-3 py-0.5 rounded-full text-[13px]">
+					<div className="bg-[#E8FBE8] text-emerald-600 font-medium px-3 py-0.5 rounded-full text-[13px]">
 						AVAILABLE FOR WORK
 					</div>
 					<motion.div
