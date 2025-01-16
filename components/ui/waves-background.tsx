@@ -22,17 +22,37 @@ interface WavesProps {
   className?: string
 }
 
+type WavePoint = {
+  x: number;
+  y: number;
+  wave: { x: number; y: number };
+  cursor: { x: number; y: number; vx: number; vy: number };
+};
+
 class Grad {
+  x: number;
+  y: number;
+  z: number;
+  cursor: any
+  wave: any
+
   constructor(x: number, y: number, z: number) {
-    this.x = x
-    this.y = y
-    this.z = z
+    this.x = x;
+    this.y = y;
+    this.z = z;
   }
+
   dot2(x: number, y: number) {
-    return this.x * x + this.y * y
+    return this.x * x + this.y * y;
   }
 }
+
 class Noise {
+
+  grad3? :any 
+  p? :any
+  perm? :any
+  gradP? :any
   constructor(seed: number = 0) {
     this.grad3 = [
       new Grad(1, 1, 0),
@@ -120,12 +140,12 @@ export function Waves({
   maxCursorMove = 100,
   className,
 }: WavesProps) {
-  const containerRef = useRef(null)
-  const canvasRef = useRef(null)
-  const ctxRef = useRef(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const boundingRef = useRef({ width: 0, height: 0, left: 0, top: 0 })
   const noiseRef = useRef(new Noise(Math.random()))
-  const linesRef = useRef([])
+  const linesRef = useRef<WavePoint[][]>([])
   const mouseRef = useRef({
     x: -10,
     y: 0,
@@ -140,14 +160,21 @@ export function Waves({
   })
 
   useEffect(() => {
+  
     const canvas = canvasRef.current
     const container = containerRef.current
-    ctxRef.current = canvas.getContext("2d")
+    if (canvas) {
+      ctxRef.current = canvas.getContext("2d")
+    }
 
     function setSize() {
-      boundingRef.current = container.getBoundingClientRect()
-      canvas.width = boundingRef.current.width
-      canvas.height = boundingRef.current.height
+      if (container) {
+        boundingRef.current = container.getBoundingClientRect()
+        if (canvas) {
+          canvas.width = boundingRef.current.width
+          canvas.height = boundingRef.current.height
+        }
+      }
     }
 
     function setLines() {
@@ -217,7 +244,7 @@ export function Waves({
       })
     }
 
-    function moved(point: any, withCursor: boolean = true) {
+    function moved(point: WavePoint, withCursor: boolean = true) {
       const x = point.x + point.wave.x + (withCursor ? point.cursor.x : 0)
       const y = point.y + point.wave.y + (withCursor ? point.cursor.y : 0)
       return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 }
@@ -226,12 +253,16 @@ export function Waves({
     function drawLines() {
       const { width, height } = boundingRef.current
       const ctx = ctxRef.current
-      ctx.clearRect(0, 0, width, height)
-      ctx.beginPath()
-      ctx.strokeStyle = lineColor
+      
+      // Add a null check to prevent potential runtime errors
+      if (!ctxRef.current) return
+
+      ctxRef.current.clearRect(0, 0, width, height)
+      ctxRef.current.beginPath()
+      ctxRef.current.strokeStyle = lineColor
       linesRef.current.forEach((points) => {
         let p1 = moved(points[0], false)
-        ctx.moveTo(p1.x, p1.y)
+        ctxRef.current?.moveTo(p1.x, p1.y)
         points.forEach((p, idx) => {
           const isLast = idx === points.length - 1
           p1 = moved(p, !isLast)
@@ -239,15 +270,16 @@ export function Waves({
             points[idx + 1] || points[points.length - 1],
             !isLast,
           )
-          ctx.lineTo(p1.x, p1.y)
-          if (isLast) ctx.moveTo(p2.x, p2.y)
+          ctxRef.current?.lineTo(p1.x, p1.y)
+          if (isLast) ctxRef.current?.moveTo(p2.x, p2.y)
         })
       })
-      ctx.stroke()
+      ctxRef.current.stroke()
     }
 
     function tick(t: number) {
       const mouse = mouseRef.current
+      const container = containerRef.current
 
       mouse.sx += (mouse.x - mouse.sx) * 0.1
       mouse.sy += (mouse.y - mouse.sy) * 0.1
@@ -262,8 +294,10 @@ export function Waves({
       mouse.ly = mouse.y
       mouse.a = Math.atan2(dy, dx)
 
-      container.style.setProperty("--x", `${mouse.sx}px`)
-      container.style.setProperty("--y", `${mouse.sy}px`)
+      if (container) {
+        container.style.setProperty("--x", `${mouse.sx}px`)
+        container.style.setProperty("--y", `${mouse.sy}px`)
+      }
 
       movePoints(t)
       drawLines()

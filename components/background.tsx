@@ -9,16 +9,16 @@ export default function Background() {
 		<div className="fixed inset-0 -z-50">
 			<Waves
 				lineColor={theme === "dark" ? "rgba(255, 255, 255, 0.07)" : "rgba(0, 0, 0, 0.07)"}
-				backgroundColor="transparent"
-				waveSpeedX={0.015}
+				backgroundColor="rgba(255, 255, 255, 0.2)"
+				waveSpeedX={0.02}
 				waveSpeedY={0.01}
-				waveAmpX={90}
+				waveAmpX={40}
 				waveAmpY={20}
-				friction={0.99}
+				friction={0.9}
 				tension={0.01}
-				maxCursorMove={100}
-				xGap={24}
-				yGap={48}
+				maxCursorMove={120}
+				xGap={12}
+				yGap={36}
 			/>
 		</div>
 	)
