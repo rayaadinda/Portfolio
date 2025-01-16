@@ -8,7 +8,9 @@ export default function Background() {
 	return (
 		<div className="fixed inset-0 -z-50">
 			<Waves
-				lineColor={theme === "dark" ? "rgba(255, 255, 255, 0.07)" : "rgba(0, 0, 0, 0.07)"}
+				lineColor={
+					theme === "dark" ? "rgba(255, 255, 255, 0.07)" : "rgba(0, 0, 0, 0.07)"
+				}
 				backgroundColor="rgba(255, 255, 255, 0.2)"
 				waveSpeedX={0.02}
 				waveSpeedY={0.01}
@@ -16,7 +18,7 @@ export default function Background() {
 				waveAmpY={20}
 				friction={0.9}
 				tension={0.01}
-				maxCursorMove={120}
+				maxCursorMove={0}
 				xGap={12}
 				yGap={36}
 			/>
