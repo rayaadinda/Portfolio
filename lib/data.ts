@@ -4,11 +4,9 @@ import rayminImg from "@/public/raymin.png"
 import movielistImg from "@/public/movielist.png"
 import bookshelfImg from "@/public/bookshelf.png"
 import rafconvertImg from "@/public/rafconvert.png"
+import bangkit from "@/public/bangkit.jpg"
 import monogatari from "@/public/image.png"
-import { CgWorkAlt } from "react-icons/cg"
-import { FaReact } from "react-icons/fa"
 import { LuGraduationCap } from "react-icons/lu"
-import { url } from "inspector"
 
 export const links = [
 	{
@@ -110,6 +108,19 @@ export const skillsData = [
 ] as const
 
 export const experiencesData = [
+	{
+		title: "Bangkit Academy",
+		location: "Mobile Developer Cohort",
+		description:
+			"accepted from 45,000 registered and became a mobile developer cohort and fully graduated",
+		icon: React.createElement('img', { 
+			src: '/bangkit.jpg', 
+			alt: 'Bangkit Academy Logo', 
+			className: 'w-8 h-8 rounded-full object-cover' 
+		}),
+		date: "Sep 2024 - Dec 2024",
+	},
+
 	{
 		title: "Universitas Pamulang",
 		location: "Pamulang, Tanggerang Selatan",
