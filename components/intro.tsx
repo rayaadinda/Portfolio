@@ -6,6 +6,9 @@ import Image from "next/image"
 import { useSectionInView } from "@/lib/hooks"
 import { useActiveSectionContext } from "@/context/active-section-context"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
+import { HyperText } from "@/components/ui/hyper-text"
+import { Tilt } from "@/components/ui/tilt"
+import { Spotlight } from "@/components/ui/spotlight"
 
 export default function Intro() {
 	const { ref } = useSectionInView("Home", 0.5)
@@ -19,17 +22,17 @@ export default function Intro() {
 		>
 			<div className="flex flex-col sm:flex-row items-center justify-between w-full px-4 gap-8 sm:gap-24">
 				<div className="flex flex-col items-center sm:items-start max-w-xl text-center sm:text-left">
-					<div className="flex items-center gap-3 text-base mb-6">
-						<span className="text-black font-medium">• Software Engineer</span>
-					</div>
-
-					<motion.h1
-						className="text-4xl sm:text-5xl font-semibold mb-4"
+					<motion.div className="flex items-center gap-3 text-base mb-6"
 						initial={{ opacity: 0, y: 100 }}
-						animate={{ opacity: 1, y: 0 }}
-					>
-						I'm Raya Adinda
-					</motion.h1>
+						animate={{ opacity: 1, y: 0 }}>
+						<span className=""><HyperText text="Sofware Engineer" className="text-lg font-medium" animateOnLoad={true} /></span>
+					</motion.div>
+
+					<HyperText 
+						text="Hi, I'm Raya Adinda"
+						className="text-4xl font-bold mb-4"
+						animateOnLoad={true}
+					/>
 
 					<motion.p
 						className="text-black text-base sm:text-lg mb-6"
@@ -37,8 +40,7 @@ export default function Intro() {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.1 }}
 					>
-						Frontend developer from Jakarta, ID.<br />
-						Currently studying at Universitas Pamulang.
+						<HyperText text="Frontend Developer from Jakarta, ID" className="text-lg font-medium" animateOnLoad={true} />	
 					</motion.p>
 
 					<motion.div
@@ -76,28 +78,35 @@ export default function Intro() {
 					</motion.div>
 				</div>
 
-				<div className="flex flex-col items-center gap-3">
-					<div className="bg-[#E8FBE8] text-emerald-600 font-medium px-3 py-0.5 rounded-full text-[13px]">
-						AVAILABLE FOR WORK
-					</div>
-					<motion.div
-						className="w-32 h-32 sm:w-48 sm:h-48 rounded-full"
-						initial={{ opacity: 0, scale: 0.5 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ delay: 0.3 }}
+				<motion.div className="relative"
+							initial={{ opacity: 0, y: 100 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ delay: 0.2 }}>
+					<Tilt
+						rotationFactor={30}
+						springOptions={{
+							stiffness: 26.7,
+							damping: 4.1,
+							mass: 0.2,
+						}}
+						className="group relative"
 					>
-						<div className="rounded-full overflow-hidden w-full h-full p-1">
+						<div className="bg-[#E8FBE8] text-emerald-600 text-center font-medium px-3 py-0.5 rounded-full text-[13px]">
+							AVAILABLE FOR WORK
+						</div>
+						<div className="relative h-48 w-48 rounded-full overflow-hidden border-4 border-white/10 shadow-xl">
 							<Image
 								src="/avatar.png"
-								alt="Raya's avatar"
-								width={300}
-								height={300}
-								className="rounded-full object-cover"
-								priority
+								alt="Raya Adinda"
+								width={200}
+								height={200}
+								quality={95}
+								priority={true}
+								className="object-cover w-full h-full grayscale-[0.2] group-hover:grayscale-0 transition duration-500"
 							/>
 						</div>
-					</motion.div>
-				</div>
+					</Tilt>
+				</motion.div>
 			</div>
 		</section>
 	)

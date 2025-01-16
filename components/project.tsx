@@ -4,91 +4,92 @@ import { projectsData } from "@/lib/data"
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
+import { useTheme } from "next-themes"
+import { Waves } from "./ui/waves-background"
 import { StaticImageData } from "next/image"
+import { Tilt } from "@/components/ui/tilt"
 
 type ProjectProps = {
-	title: string
-	description: string
-	tags: readonly string[]
-	imageUrl: StaticImageData
-	url?: string
+  title: string
+  description: string
+  tags: readonly string[]
+  imageUrl: StaticImageData
+  url?: string
 }
 
 export default function Project({
-	title,
-	description,
-	tags,
-	imageUrl,
-	url,
+  title,
+  description,
+  tags,
+  imageUrl,
+  url,
 }: ProjectProps) {
-	const ref = useRef<HTMLDivElement>(null)
-	const { scrollYProgress } = useScroll({
-		target: ref,
-		offset: ["0 1", "1.33 1"],
-	})
-	const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
-	const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1])
+  const ref = useRef<HTMLDivElement>(null)
+  const { theme } = useTheme()
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1.33 1"],
+  })
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1])
 
-	return (
-		<motion.div
-			ref={ref}
-			style={{
-				scale: scaleProgress,
-				opacity: opacityProgress,
-			}}
-			className="group last:mb-0"
-		>
-			<a href={url} target="_blank" rel="noopener noreferrer">
-				<section className="flex items-center p-4 sm:hidden">
-					<div className="w-12 h-12 rounded-md bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mr-4">
-						<Image
-							src={imageUrl}
-							alt="Project"
-							quality={95}
-							className="w-6 h-6 object-contain"
-						/>
-					</div>
-					<div className="flex-1">
-						<h3 className="font-medium text-[15px] text-black dark:text-white">{title}</h3>
-						<p className="text-gray-500 dark:text-white/60 text-sm">{tags.slice(0, 4).join(", ")}</p>
-					</div>
-					<div>
-						<svg className="w-5 h-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-						</svg>
-					</div>
-				</section>
-
-				<section className="relative h-[400px] rounded-md overflow-hidden group hidden sm:block">
-					<Image
-						src={imageUrl}
-						alt="Project"
-						quality={95}
-						className="w-full h-full object-cover object-center brightness-[0.3] group-hover:scale-105 group-hover:brightness-[0.2] transition duration-300"
-					/>
-					<div className="absolute inset-0 flex flex-col justify-end p-8">
-						<h3 className="text-4xl font-bold text-white mb-4">{title}</h3>
-						<p className="text-white/80 mb-6 line-clamp-3 text-lg">
-							{description}
-						</p>
-						<div className="flex justify-between items-center">
-							<ul className="flex flex-wrap gap-2">
-								{tags.map((tag, index) => (
-									<li
-										className="bg-white/10 backdrop-blur-sm px-4 py-1 text-sm text-white rounded-full"
-										key={index}
-									>
-										{tag}
-									</li>
-								))}
-							</ul>
-							<button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-white/90 transition">
-								View Project
-							</button>
-						</div>
-					</div>
-				</section>
-			</a>
-		</motion.div>
-	)
+  return (
+    <motion.div
+      ref={ref}
+      style={{
+        scale: scaleProgress,
+        opacity: opacityProgress,
+      }}
+      className="group relative mb-3 last:mb-0"
+    >
+      <Tilt rotationFactor={8} isReverse>
+        <div className="relative overflow-hidden rounded-lg border border-zinc-200 bg-white transition duration-300 hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700">
+          <div className="absolute inset-0">
+            <Waves
+              lineColor={theme === "dark" ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.2)"}
+              backgroundColor="transparent"
+              waveSpeedX={0.02}
+              waveSpeedY={0.01}
+              waveAmpX={40}
+              waveAmpY={20}
+              friction={0.9}
+              tension={0.01}
+              maxCursorMove={120}
+              xGap={12}
+              yGap={36}
+            />
+          </div>
+          <div className="relative z-10 flex flex-col gap-4 p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="h-12 w-12 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
+                  <Image
+                    src={imageUrl}
+                    alt={title}
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-medium text-zinc-900 dark:text-zinc-100">{title}</h3>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">{description}</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Tilt>
+    </motion.div>
+  )
 }
