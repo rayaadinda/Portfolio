@@ -19,8 +19,9 @@ const TimelineElement = memo(({ item, theme }: { item: any; theme: string }) => 
         theme === "light" ? "#f3f4f6" : "rgba(255, 255, 255, 0.05)",
       boxShadow: "none",
       border: "1px solid rgba(0, 0, 0, 0.05)",
+      borderRadius: "0.5rem",
       textAlign: "left",
-      padding: "1rem 2rem",
+      padding: "1.3rem 2rem",
     }}
     contentArrowStyle={{
       borderRight:
@@ -31,8 +32,7 @@ const TimelineElement = memo(({ item, theme }: { item: any; theme: string }) => 
     date={item.date}
     icon={item.icon}
     iconStyle={{
-      background:
-        theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
+      background: theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
       fontSize: "1.5rem",
     }}
   >
@@ -42,9 +42,10 @@ const TimelineElement = memo(({ item, theme }: { item: any; theme: string }) => 
       {item.description}
     </p>
   </VerticalTimelineElement>
-));
+))
+TimelineElement.displayName = 'TimelineElement'
 
-const Experience = () => {
+const Experience = memo(() => {
   const { ref } = useSectionInView("Experience")
   const { theme } = useTheme()
 
@@ -57,12 +58,13 @@ const Experience = () => {
 
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>Education</SectionHeading>
+      <SectionHeading>My Experience</SectionHeading>
       <VerticalTimeline lineColor="" animate={true}>
         {timelineElements}
       </VerticalTimeline>
     </section>
   )
-}
+})
+Experience.displayName = 'Experience'
 
-export default memo(Experience);
+export default Experience;

@@ -16,12 +16,13 @@ const AboutText = memo(() => (
       <span className="font-bold">Bangkit Academy</span> as a Mobile Developer, where I work with Kotlin to build Android applications. This experience has strengthened my understanding of mobile development principles and best practices.
     </p>
     <p>
-      My technical journey spans both mobile and web development, allowing me to approach problems with a versatile perspective. I'm particularly interested in creating intuitive user experiences and exploring the intersection of mobile and web development.
+      My technical journey spans both mobile and web development, allowing me to approach problems with a versatile perspective. I'm particularly interested in creating intuitive user experiences.
     </p>
   </>
-));
+))
+AboutText.displayName = 'AboutText'
 
-const About = () => {
+const About = memo(() => {
   const { ref } = useSectionInView("About")
   
   return (
@@ -33,10 +34,11 @@ const About = () => {
       transition={{ delay: 0.175 }}
       id="about"
     >
-      <SectionHeading>About Me</SectionHeading>
+      <SectionHeading>About me</SectionHeading>
       <AboutText />
     </motion.section>
   )
-}
+})
+About.displayName = 'About'
 
-export default memo(About);
+export default About;

@@ -23,17 +23,17 @@ interface WavesProps {
 }
 
 class Grad {
-  constructor(x, y, z) {
+  constructor(x: number, y: number, z: number) {
     this.x = x
     this.y = y
     this.z = z
   }
-  dot2(x, y) {
+  dot2(x: number, y: number) {
     return this.x * x + this.y * y
   }
 }
 class Noise {
-  constructor(seed = 0) {
+  constructor(seed: number = 0) {
     this.grad3 = [
       new Grad(1, 1, 0),
       new Grad(-1, 1, 0),
@@ -70,7 +70,7 @@ class Noise {
     this.gradP = new Array(512)
     this.seed(seed)
   }
-  seed(seed) {
+  seed(seed: number) {
     if (seed > 0 && seed < 1) seed *= 65536
     seed = Math.floor(seed)
     if (seed < 256) seed |= seed << 8
@@ -80,13 +80,13 @@ class Noise {
       this.gradP[i] = this.gradP[i + 256] = this.grad3[v % 12]
     }
   }
-  fade(t) {
+  fade(t: number) {
     return t * t * t * (t * (t * 6 - 15) + 10)
   }
-  lerp(a, b, t) {
+  lerp(a: number, b: number, t: number) {
     return (1 - t) * a + t * b
   }
-  perlin2(x, y) {
+  perlin2(x: number, y: number) {
     let X = Math.floor(x),
       Y = Math.floor(y)
     x -= X
@@ -173,7 +173,7 @@ export function Waves({
       }
     }
 
-    function movePoints(time) {
+    function movePoints(time: number) {
       const lines = linesRef.current
       const mouse = mouseRef.current
       const noise = noiseRef.current
@@ -217,7 +217,7 @@ export function Waves({
       })
     }
 
-    function moved(point, withCursor = true) {
+    function moved(point: any, withCursor: boolean = true) {
       const x = point.x + point.wave.x + (withCursor ? point.cursor.x : 0)
       const y = point.y + point.wave.y + (withCursor ? point.cursor.y : 0)
       return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 }
@@ -246,7 +246,7 @@ export function Waves({
       ctx.stroke()
     }
 
-    function tick(t) {
+    function tick(t: number) {
       const mouse = mouseRef.current
 
       mouse.sx += (mouse.x - mouse.sx) * 0.1
@@ -274,15 +274,15 @@ export function Waves({
       setSize()
       setLines()
     }
-    function onMouseMove(e) {
+    function onMouseMove(e: any) {
       updateMouse(e.pageX, e.pageY)
     }
-    function onTouchMove(e) {
+    function onTouchMove(e: any) {
       e.preventDefault()
       const touch = e.touches[0]
       updateMouse(touch.clientX, touch.clientY)
     }
-    function updateMouse(x, y) {
+    function updateMouse(x: number, y: number) {
       const mouse = mouseRef.current
       const b = boundingRef.current
       mouse.x = x - b.left

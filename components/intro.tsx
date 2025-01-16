@@ -8,7 +8,7 @@ import { useActiveSectionContext } from "@/context/active-section-context"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import { HyperText } from "@/components/ui/hyper-text"
 import { Tilt } from "@/components/ui/tilt"
-import { Spotlight } from "@/components/ui/spotlight"
+
 
 const SocialLink = memo(({ href, icon: Icon }: { href: string; icon: React.ComponentType<{ size: number }> }) => (
   <Link
@@ -18,9 +18,10 @@ const SocialLink = memo(({ href, icon: Icon }: { href: string; icon: React.Compo
   >
     <Icon size={20} />
   </Link>
-));
+))
+SocialLink.displayName = 'SocialLink'
 
-const Intro = () => {
+const Intro = memo(() => {
   const { ref } = useSectionInView("Home", 0.5)
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
 
@@ -40,7 +41,7 @@ const Intro = () => {
           <motion.div className="flex items-center gap-3 text-base mb-6"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}>
-            <span className=""><HyperText text="Sofware Engineer" className="text-lg font-medium" animateOnLoad={true} /></span>
+            <span className=""><HyperText text="Software Engineer" className="text-lg font-medium" animateOnLoad={true} /></span>
           </motion.div>
 
           <HyperText 
@@ -110,6 +111,7 @@ const Intro = () => {
       </div>
     </section>
   )
-}
+})
+Intro.displayName = 'Intro'
 
-export default memo(Intro);
+export default Intro;
