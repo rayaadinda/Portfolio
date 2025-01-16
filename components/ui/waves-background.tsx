@@ -160,6 +160,30 @@ export function Waves({
   })
 
   useEffect(() => {
+    const canvas = canvasRef.current
+    const container = containerRef.current
+    const ctx = canvas?.getContext("2d")
+    ctxRef.current = ctx || null
+
+    if (canvas && container) {
+      // Prevent touch events from interfering with scrolling
+      const preventScroll = (e: TouchEvent) => {
+        e.preventDefault()
+      }
+
+      container.addEventListener('touchstart', preventScroll, { passive: false })
+      container.addEventListener('touchmove', preventScroll, { passive: false })
+      container.addEventListener('touchend', preventScroll, { passive: false })
+
+      return () => {
+        container.removeEventListener('touchstart', preventScroll)
+        container.removeEventListener('touchmove', preventScroll)
+        container.removeEventListener('touchend', preventScroll)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
   
     const canvas = canvasRef.current
     const container = containerRef.current
@@ -362,9 +386,11 @@ export function Waves({
       style={{
         backgroundColor,
         pointerEvents: 'none',
+        position: 'fixed', 
+        zIndex: -1, 
       }}
       className={cn(
-        "absolute top-0 left-0 w-full h-full overflow-hidden",
+        "top-0 left-0 w-full h-full overflow-hidden",
         className,
       )}
     >
