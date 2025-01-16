@@ -361,6 +361,7 @@ export function Waves({
       ref={containerRef}
       style={{
         backgroundColor,
+        pointerEvents: 'none',
       }}
       className={cn(
         "absolute top-0 left-0 w-full h-full overflow-hidden",
