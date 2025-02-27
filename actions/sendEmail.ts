@@ -11,6 +11,18 @@ export const sendEmail = async (formData: FormData) => {
 	const senderEmail = formData.get("senderEmail")
 	const message = formData.get("message")
 
+	// Type check and validation
+	if (!senderEmail || typeof senderEmail !== "string") {
+		return {
+			error: "Invalid sender email",
+		}
+	}
+	if (!message || typeof message !== "string") {
+		return {
+			error: "Invalid message",
+		}
+	}
+
 	// simple server-side validation
 	if (!validateString(senderEmail, 500)) {
 		return {
@@ -29,7 +41,7 @@ export const sendEmail = async (formData: FormData) => {
 			from: "Contact Form <onboarding@resend.dev>",
 			to: "rayaadinda78@gmail.com",
 			subject: "Message from contact form",
-			reply_to: senderEmail,
+			reply_to: senderEmail as string,
 			react: React.createElement(ContactFormEmail, {
 				message: message,
 				senderEmail: senderEmail,
