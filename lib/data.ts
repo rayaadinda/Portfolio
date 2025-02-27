@@ -1,13 +1,13 @@
 import React from "react"
-import fromrayacameraImg from "@/public/fromrayacamera.png"
-import rayminImg from "@/public/raymin.png"
-import movielistImg from "@/public/movielist.png"
+
 import preview from "@/public/1.png"
 import preview2 from "@/public/2.png"
 import preview3 from "@/public/3.png"
+import unchainImg from "@/public/unchain.png"
 import bangkit from "@/public/bangkit.jpg"
 import monogatari from "@/public/image.png"
 import logo from "@/public/Direct.png"
+import logo2 from "@/public/icon.png"
 import { LuGraduationCap } from "react-icons/lu"
 
 export const links = [
@@ -39,6 +39,24 @@ export const links = [
 
 export const projectsData = [
 	{
+		title: "Unchain",
+		description:
+			"UnChain is an innovative mobile application that leverages artificial intelligence to help users understand, track, and overcome sugar addiction.",
+		tags: ["Kotlin", "Android", "AI/ML", "Firebase"],
+		logoUrl: logo2,
+		imageUrl: unchainImg,
+		url: "https://github.com/unChain-Capstone",
+	},
+	{
+		title: "Monogatari",
+		description:
+			"Monogatari is a MERN stack Blog WebApp that allows users to read, create, and delete blog posts. It's a platform for sharing stories, thoughts, and experiences.",
+		tags: ["MongoDB", "Expressjs", "Reactjs", "Tailwindcss", "Nodejs"],
+		logoUrl: logo,
+		imageUrl: monogatari,
+		url: "https://monogatariv2.vercel.app/",
+	},
+	{
 		title: "Fromrayacamera",
 		description:
 			"Fromrayacamera is a website gallery of my journey while using an analog camera as well as being a final project in one of my courses",
@@ -66,16 +84,6 @@ export const projectsData = [
 		logoUrl: logo,
 		imageUrl: preview3,
 		url: "https://react-movie-jet.vercel.app/",
-	},
-
-	{
-		title: "Monogatari",
-		description:
-			"Monogatari is a MERN stack Blog WebApp that allows users to read, create, and delete blog posts. It's a platform for sharing stories, thoughts, and experiences.",
-		tags: ["MongoDB", "Expressjs", "Reactjs", "Tailwindcss", "Nodejs"],
-		logoUrl: logo,
-		imageUrl: monogatari,
-		url: "https://monogatariv2.vercel.app/",
 	},
 ] as const
 
