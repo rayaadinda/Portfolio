@@ -2,10 +2,12 @@ import React from "react"
 import fromrayacameraImg from "@/public/fromrayacamera.png"
 import rayminImg from "@/public/raymin.png"
 import movielistImg from "@/public/movielist.png"
-import bookshelfImg from "@/public/bookshelf.png"
-import rafconvertImg from "@/public/rafconvert.png"
+import preview from "@/public/1.png"
+import preview2 from "@/public/2.png"
+import preview3 from "@/public/3.png"
 import bangkit from "@/public/bangkit.jpg"
 import monogatari from "@/public/image.png"
+import logo from "@/public/Direct.png"
 import { LuGraduationCap } from "react-icons/lu"
 
 export const links = [
@@ -41,7 +43,9 @@ export const projectsData = [
 		description:
 			"Fromrayacamera is a website gallery of my journey while using an analog camera as well as being a final project in one of my courses",
 		tags: ["Html", "css", "Javascript", "figma"],
-		imageUrl: fromrayacameraImg,
+		logoUrl: logo,
+		imageUrl: preview,
+		imageUrl2: preview2,
 		url: "https://rayaadinda.github.io/fromrayacamera/",
 	},
 	{
@@ -49,7 +53,8 @@ export const projectsData = [
 		description:
 			"Raymin is an admin dashboard website that I sliced ​​from Figma",
 		tags: ["Html", "css", "Javascript", "figma"],
-		imageUrl: rayminImg,
+		logoUrl: logo,
+		imageUrl: preview2,
 		url: "https://rayaadinda.github.io/Slicing-Admin-Dasboard/",
 	},
 
@@ -58,26 +63,9 @@ export const projectsData = [
 		description:
 			"movie list is a my react project that displays a list of movies by consuming api from TheMoviedb",
 		tags: ["react", "taildwindCSS", "Javascript"],
-		imageUrl: movielistImg,
+		logoUrl: logo,
+		imageUrl: preview3,
 		url: "https://react-movie-jet.vercel.app/",
-	},
-
-	{
-		title: "BookshelfAPP",
-		description:
-			"BookshelfApp is a web app for managing book collections, where users can input book details like title, author, and publication date. It organizes books into read and unread categories, aiding users in tracking their reading progress.",
-		tags: ["html", "css", "Javascript"],
-		imageUrl: bookshelfImg,
-		url: "https://book-shelf-app-zeta.vercel.app/",
-	},
-
-	{
-		title: "RAFConvert",
-		description:
-			"RAFConvert is a versatile website designed for hassle-free conversion of links from YouTube, Instagram, and Twitter into downloadable formats. With RAFConvert, users can easily obtain their favorite content from these platforms with just a few clicks",
-		tags: ["html", "css", "Javascript"],
-		imageUrl: rafconvertImg,
-		url: "https://rayaadinda.github.io/RAF/",
 	},
 
 	{
@@ -85,6 +73,7 @@ export const projectsData = [
 		description:
 			"Monogatari is a MERN stack Blog WebApp that allows users to read, create, and delete blog posts. It's a platform for sharing stories, thoughts, and experiences.",
 		tags: ["MongoDB", "Expressjs", "Reactjs", "Tailwindcss", "Nodejs"],
+		logoUrl: logo,
 		imageUrl: monogatari,
 		url: "https://monogatariv2.vercel.app/",
 	},
@@ -113,10 +102,10 @@ export const experiencesData = [
 		location: "Mobile Developer Cohort",
 		description:
 			"accepted from 45,000 registered and became a mobile developer cohort and fully graduated",
-		icon: React.createElement('img', { 
-			src: '/bangkit.jpg', 
-			alt: 'Bangkit Academy Logo', 
-			className: 'w-8 h-8 rounded-full object-cover' 
+		icon: React.createElement("img", {
+			src: "/bangkit.jpg",
+			alt: "Bangkit Academy Logo",
+			className: "w-8 h-8 rounded-full object-cover",
 		}),
 		date: "Sep 2024 - Dec 2024",
 	},
